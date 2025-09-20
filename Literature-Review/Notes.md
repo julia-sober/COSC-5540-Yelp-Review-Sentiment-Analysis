@@ -9,7 +9,7 @@
   * Calculate sentiment score by comparing BOW with opinion lexicon
   * ML on sentiment scores
 * Future work: aspect level analysis could improve (e.g. Camera’s quality, megapixel, picture size, structure, lens, picture quality, etc.)
-![alt text](/Media/Results-Jagdale.png)
+![alt text](https://github.com/julia-sober/COSC-5540-Yelp-Review-Sentiment-Analysis/blob/main/Literature-Review/Media/Results-Jagdale.png)
 
 #### Yelp Dataset Challenge: Review Rating Prediction; Nabiha Asghar
 * ...
