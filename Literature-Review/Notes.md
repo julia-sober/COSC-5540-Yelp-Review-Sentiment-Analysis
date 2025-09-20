@@ -9,10 +9,59 @@
   * Calculate sentiment score by comparing BOW with opinion lexicon
   * ML on sentiment scores
 * Future work: aspect level analysis could improve (e.g. Camera’s quality, megapixel, picture size, structure, lens, picture quality, etc.)
-![alt text](https://github.com/julia-sober/COSC-5540-Yelp-Review-Sentiment-Analysis/blob/main/Literature-Review/Media/Results-Jagdale.png)
 
 #### Yelp Dataset Challenge: Review Rating Prediction; Nabiha Asghar
-* ...
+* **Summary**: Very detailed overview of methods, lots of great info, but underwhelming results.
+* **Helpful definition / problem overview for presentation**:
+  * Review Rating Prediction (RRP) = The problem of predicting a user's star rating for a product, given the user's text review for that product.
+  * On famous websites like Amazon and Yelp, many products and businesses receive tens or hundreds of reviews, making it impossible for readers to read all of them. Generally, readers prefer to look at the star ratings only and ignore the text. However, the relationship between the text and the rating is not obvious, as illustrated in Figure 1. In particular, several questions may be asked:
+    * Why exactly did this reviewer give the restaurant 3/5 stars?
+    * In addition to the quality of food, variety, size and service time, what other features of the restaurant did the user implicitly consider, and what was the relative importance given to each of them?
+    * How does this relationship change if we consider a different user's rating and text review?
+  * The process of predicting this relationship for a generic user (but for a specific product/business) is called Review Rating Prediction.
+    * Concretely, given the set S = {(r1, s1), …, (rn, sn)} for a product P, where ri is the ith user's text review of P and si is the ith user's numeric rating for P, the goal is to learn the best mapping from a word vector r to a numeric rating s.
+  * Review Rating Prediction is a useful problem to solve, because it can help us decide whether it is enough to look at the star ratings of a product and ignore its textual reviews.
+  * However, it is a hard problem to solve because two users who give a product the same rating, may have very different reasons for doing so. User A may give a restaurant 2/5 stars because it does not have free wifi and free parking, even though the food is good. User B may give the same restaurant a rating of 2/5 because he does not care about the wifi and parking, and thinks that the food is below average. Therefore, the main challenge in building a good predictor is to effectively extract useful features of the product from the text reviews and to then quantify their relative importance with respect to the rating.
+* **Note**: About 66% of these reviews rate the corresponding restaurants very highly (at least 4 stars); the other classes are smaller. (In my (Julia's) opinion, this could be a reason for the poor results (unbalanced classes))
+* **Preprocessing**: removed capitalizations, stop words and punctuations
+* **Feature Extraction**: feature vector for each review from four different methods:
+  * Unigrams (AKA Bag of Words): each unique word in the pre-processed review corpus is considered as a feature.
+     * word-review matrix is constructed, where entry (i,j) is the frequency of occurrence of word i in the jth review
+     * Apply the TF-IDF (Term Frequency - Inverse Document Frequency) weighting technique to this matrix to obtain the final feature matrix (weighting technique assigns less weight to words that occur more frequently across reviews (e.g. “food") because they are generally not good distinguishers between any pair of reviews and a high weight to more rare words.)
+     * Each column of this matrix is a feature vector of the corresponding review.
+  * Unigrams & Bigrams:
+     * To capture the effect of phrases such as ‘tasty burger’ and ‘not delicious’, we add bigrams to the unigrams model.
+     * Now, the dictionary additionally consists of all the 2-tuples of words (i.e. all pairs of consecutive words) occurring in the corpus of reviews.
+     * The matrix is computed as before; it has more rows now. As before, we apply TF-IDF weighting to this matrix so that less importance is given to common words and more importance is given to rare words.
+  * Unigrams, Bigrams, & Trigrams:
+     * The same trigram would rarely occur across different reviews, because two different people are unlikely to use the same 3-word phrase in their reviews. Therefore, the results of this model are not expected to be very different from the unigrams+bigrams model.
+  * Latent Semantic Indexing (LSI):
+     * more sophisticated method of lexical matching, which goes beyond exact matching of words. It finds ‘topics' in reviews, which are words having similar meanings or words occurring in a similar context.
+     * In LSI, we first construct a word-review matrix M, of size m x t, using the unigrams model, and then do Singular Value Decomposition (SVD) of M.
+     * The SVD function outputs three matrices: the wordtopic matrix U of size m x m, the rectangular diagonal matrix S of size m x t containing t singular values, and the transpose of the topic-review matrix V of size t x t. We use V as the feature matrix.
+     * The singular values matrix S has t non-zero diagonal entries that are the singular values in decreasing order of importance.
+     * The columns of S correspond to the topics in the reviews. The ith singular value is a measure of the importance of the ith topic.
+     * By default, t = the size of vocabulary (i.e. 171,846). However, the first t*  topics can be chosen as the most important ones, and thus the top t*  rows of V can be used as the feature matrix.
+     * Determining the value of t* is crucial, and this can be done by examining a simple plot of the singular values against their importance, and looking for an ‘elbow' in the plot.
+* **ML Models**:
+  * Logistic regression
+  * Multinomial Naive Bayes classification
+  * Perceptron (n_iterations = 50)
+  * SVM (linear, tolerance = 0.001)
+     * For each feature extraction method, we do internal 3-fold cross validation to choose the value of C that gives the highest accuracy. It turns out that C = 1.0 works best every time.
+* **Performance Metrics**:
+  * 80/20 train/test split
+  * 3-fold cross validation on the training set and compute two metrics, Root Mean Squared Error (RMSE) and accuracy, for the training fold as well as the validation fold
+* **Results**: Logistic Regression achieved the highest accuracy of 64% using the top 10,000 Unigrams & Bigrams as features, followed very closely by Linear SVC which achieved 63% accuracy using the top 10,000 Unigrams & Bigrams. (I took more extensive notes on the rest of the results but am not including them here for brevity's sake).
+* **Future Work**:
+  * more sophisticated feature engineering methods, such as Parts-of-Speech (POS) tagging and spell-checkers, to obtain more useful n-grams (e.g. instead of considering all possible bigrams, we can extract all the adjective-noun pairs or all the noun-noun pairs to get more meaningful 2-tuples)
+  * We can try more elaborate experiments for LSI that consider more than 200 features. Moreover, instead of performing singular value decomposition of unigrams only, we can add other n-grams.
+  * ordered/ordinal logistic regression (model takes into consideration the fact that the class labels 1 and 2 are closer to each other, than the labels 1 and 4.)
+  * Non-linear classifier 
+
+
+
+
 
 #### Sentiment Analysis: A Systematic Case Study with Yelp Scores; Wenping Wang Et al.
 * ...
