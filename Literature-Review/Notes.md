@@ -59,10 +59,6 @@
   * ordered/ordinal logistic regression (model takes into consideration the fact that the class labels 1 and 2 are closer to each other, than the labels 1 and 4.)
   * Non-linear classifier 
 
-
-
-
-
 #### Sentiment Analysis: A Systematic Case Study with Yelp Scores; Wenping Wang Et al.
 * ...
 
@@ -78,8 +74,19 @@
 #### Sentiment Analysis on Food Review using Machine Learning Approach; Nourin Islam, Ms. Nasrin Akter, Abdus Sattar
 * ...
 
-#### Sentiment Analysis using Machine Learning Techniques on Python
+#### Sentiment Analysis using Machine Learning Techniques on Python; Ratheee Et al.
 * ...
 
-#### Sentiment Analysis of Yelp‘s Ratings Based on Text Reviews
+#### Sentiment Analysis of Yelp‘s Ratings Based on Text Reviews; Xu Et al.
 * ... Testing
+
+### Some more papers I found that were used as references in other papers:
+
+#### Integrating Collaborative Filtering and Sentiment Analysis: A Rating Inference Approach; Cane Wing-ki Leung and Stephen Chi-fai Chan and Fu-lai Chung
+* ...
+
+#### The Bag-of-Opinions Method for Review Rating Prediction from Sparse Text Patterns; Qu Et al.
+* ...
+
+#### Predicting a Business’ Star in Yelp from Its Reviews’ Text Alone; Fan, Khademi
+* ...
