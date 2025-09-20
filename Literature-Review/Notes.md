@@ -1,5 +1,15 @@
 #### Sentiment Analysis on Product Reviews Using Machine Learning Techniques; Rajkumar S. Jagdale, Vishal S. Shirsat and Sachin N. Deshmuk
-* ...
+* Amazon product reviews: Camera, Laptops, Mobile phones, tablets, TVs, video surveillance (approx 13k total reviews)
+* Classified reviews as positive or negative
+* Naïve Bayes: 98.17% accuracy, SVM: 93.54% for Camera Reviews
+* Process Overview:
+  * Split review by sentence
+  * Preprocess each sentence (tokenization, stop word removal, stemming, punctuation marks removal)
+  * Convert to bag of words (BOW)
+  * Calculate sentiment score by comparing BOW with opinion lexicon
+  * ML on sentiment scores
+* Future work: aspect level analysis could improve (e.g. Camera’s quality, megapixel, picture size, structure, lens, picture quality, etc.)
+![alt text](/Media/Results-Jagdale.png)
 
 #### Yelp Dataset Challenge: Review Rating Prediction; Nabiha Asghar
 * ...
