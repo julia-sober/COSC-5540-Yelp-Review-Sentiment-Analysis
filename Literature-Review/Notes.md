@@ -145,7 +145,18 @@
 * Dataset = 1,000 unlabeled reviews scraped from internet (so they labeled as positive or negative by hand)
 
 #### Sentiment Analysis of Yelp Reviews by Machine Learning; Hemalatha S, Ramathmika
-* ...
+* AI teaches system to do intelligent things. ML teaches the system to do intelligent things that can learn from experience. NLP teaches the system to do intelligent things that can learn from experience and understand human language. NLP is with in the field of AI and goes hand in hand with ML. It is concerned with the preprocessing of data entered by a human in a worldly language which is not directly consumable by the computer.
+
+
+* To perform sentiment analysis of restaurant reviews obtained from Yelp dataset, the reviews are classified as having positive sentiment or negative sentiment using the classification algorithms such as Naive Bayes, Multinomial Naive Bayes, Bernoulli Naive Bayes, Logistic Regression, Linear SVC (Support Vector Clustering). Naive Bayes – assumes that the presence or absence of a particular feature of a class is independent of other features in the class simplest algorithm to classify large data set. MNB – multinomial distribution forming a feature vector that represents the frequency of occurrence of that feature in a particular instance. BNB – features are independent binary variables representing the presence or absence rather than probabilities, like MNB. Linear Support Vector Clustering (SVC) – returns a hyperplane that categorizes the provided data set into good and bad. 
+
+* Gives a good description of supervised, semi-supervised, reinforcement, and unsupervised learning. 
+
+* Paper proposes supervised learning. Classify business reviews into graded categories such that they can be roughly sorted in an order from bad to good or negative to positive. 16,000 reviews are classified to positive and negative sentiments and the machine is trained to higher levels of precision. This is done by sorting the data and converting it to a txt format file which is easy for Python program to read. Each review is word tokenized and passed on to the next step of classification. Part of speech tagging where each token is tagged to its part of speech and only the adjectives are considered for the classification purpose (important for training). Each adjective is mapped to a tuple (word, frequency) to assign the probability of each word occurring or not occurring in a review depending on its type. 
+
+* Naive Bayes had the highest accuracy (79,12). Followed by MNB (78.92). This was ran on the test set. Accuracy can be improved by providing manually sorted data as an input training set and providing more number of reviews for training. 
+
+* The classification is binary and gives an overall result of the goodness or badness of the review. It does not detect sarcasm and does not deal with individual traits such as food, ambiance, cost, service among others. The future scope is to rate business based on different features, to use better and more dataset to train and to detect sarcasm.
 
 #### Sentiment Analysis on Food Review using Machine Learning Approach; Nourin Islam, Ms. Nasrin Akter, Abdus Sattar
 * ...
