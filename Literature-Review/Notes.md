@@ -60,7 +60,53 @@
   * Non-linear classifier 
 
 #### Sentiment Analysis: A Systematic Case Study with Yelp Scores; Wenping Wang Et al.
-* ...
+* **Dataset**: 132k entries, 8:1:1 training:validation:testing
+* **Feature Extraction/Engineering**:
+  * Hashing Vectorizer (sklearn):
+    * returns the a count for every token in the document, so it is no different from a regular bag-of-words model (called counter vectorizer in scikit-learn) in terms of how text features are turned into numeric representation
+    * Scales better (than BOW) with large document sets and works well with batch processing
+    * imposes little requirements on memory when working with large datasets because it doesn’t need to store the vocabulary dictionary
+  * TF-IDF (Term Frequency - Inverse Document Frequency) Vectorizer:
+    * inversely scales word use frequency to avoid importance of words such as "the" or "like"
+* **ML Models**:
+  * Logistic Regression with SGD I and SGD II:
+    * normalized the word count vector to ensure the extracted features are binary
+    * Compared to SGD I, SGD II is simply set to have more epochs and a smaller stopping criterion
+  *  Multinomial Naive Bayes:
+    *  Add smoothing to the model to ensure non-zero probability, and the smoothing parameter is set to 0.1 because the hashing vectorizer normalizes the word count matrix
+  *  Passive Aggressive:
+    * Similar to SVM (maximizing the margin of the separating planes between the data points)
+  * (Shallow) Multi-Layer Perceptron (MLP) with BERT:
+    * BERT embedding is different from other popular word embeddings such as Word2Vec or GloVe, mainly because it is contextdependent. While Word2Vec and GloVe generate just one embedding vector for each word in the document, BERT could generate multiple vectors if the given word appears multiple times under different context.
+    * 7 fully connected layers (768, 1024, 512, 512, 256, 64, 32, 5)
+    * ReLU activation
+  * (Deep) Multi-Layer Perceptron (MLP) with BERT (and other features):
+    * Other features (process each so values in range (0,1)):
+      * useful: apply shifted logistic regression with weight of 1
+      * funny: apply shifted logistic regression with weight of 1
+      * cool: apply shifted logistic regression with weight of 1
+      * positive: sum positive uni-gram counts, apply shifted logistic regression with weight of 1
+      * negative: sum positive uni-gram counts, apply shifted logistic regression with weight of 1
+      * nchars: apply shifted logistic regression with weight of 0.1
+      * nwords: apply shifted logistic regression with weight of 0.5
+      * sentiment score: (score + 5)/10 since sentiment scores are in range (−5, 5)
+    * For the deep MLP we also incorporate the 8 additional features that we constructed earlier. We take the outer product of this vector and the BERT embedding vector, and the final input vector is thus of length 768 x 8 = 6144.
+    * 9 layers and ReLU
+  * Heterogeneous (ensemble) classifiers:
+    * Baseline models ensemble: (hashing vectorizer) LR + MNB + PA
+    * Baseline models and MLP: (hashing vectorizer) LR + MNB + PA + MLP
+    * Baseline models and MLP: (TF-IDF vectorizer) LR + MNB + PA + MLP
+    * Combine using weighted voting (gave details + pseudocode for this if we are interested in implementing)
+  * AdaBoost:
+    * Two versions:
+      * All features, including review text (BERT embedding), sentiment score, uni-grams, and other spatiotemporal features.
+      * All features except for review text.
+* **Results**:
+  * TF-IDF better results in baseline models, still low (approx 50% accuracy)
+  * Shallow performs better than deep models in MLP
+  * Best accuracy: baseline models (tf-idf) + MLP ensemble = 58%
+  * best prediction model performs better when predicting star ratings of 1, 4, and 5, but really struggles with 2 and 3
+  * For star rating of 5, our best model is able to correctly classify 79.57% of the test data points, but it could only correctly classify 32.30% of the data that has ratings of 2. (**** useful insight)
 
 #### Ensemble Sentiment Analysis Using Bi-LSTM and CNN; Puneet Singh Lamba Et al.
 * ...
