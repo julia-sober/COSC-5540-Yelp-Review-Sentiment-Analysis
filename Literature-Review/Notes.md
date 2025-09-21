@@ -151,7 +151,21 @@
 * ...
 
 #### Sentiment Analysis using Machine Learning Techniques on Python; Ratheee Et al.
-* ...
+* The principal task of Sentiment Analysis is to find the perspective, view, attitude or feelings of a speaker on a particular topic, event or interaction. Finding its polarity i.e dividing it into three
+classes: neutral, negative and positive, or a range of polarity like star ratings for a movie etc. Data mining is a technique of recognizing distinct, beneficial and intriguing patterns in huge amounts of data. Classification task involves application of eight machine learning algorithms, namely, Logistic Regression, k-nearest neighbors, SupportVector Classifier, Decision Tree Classifier, Random Forest Classifier, Ada Boost Classifier, Gaussian Naive Bayes and Bagging Classifiers. In Sentiment Analysis, frequency vs term presence discussion points to the - importance of finding the most unique words rather than the most frequent ones. Negation plays a very vital role while accessing sentiments as it can invert the polarity of the whole phrase.
+
+For our analysis, four different types of datasets are taken into consideration, namely: Amazon reviews, Yelp reviews, IMDB reviews [Fig 3] and Indian Airlines reviews [Fig 4] . Pandas make it really easy to manage and manipulate data frames. ‘Matplotlib’ [12] is used for plotting all the graphs.
+
+Every component of a sentence is not needed for the Sentiment Analysis. This arises the need for the ‘review’ preprocessing. Conversion to all lowercase and removal of stopwords. Then create feature vectors off the cleaned data. 
+
+Creation of feature vector: This step involves the conversion of reviews to a vector.
+The ‘feature extraction.text.CountVectorizer()’ method of “sklearn” is used to serve the required purpose. This leads to the creation of separate column for every distinct word, occurring in all the reviews. The cell is marked 0 or 1, depending upon its occurrence in that particular review.
+
+Train-Test Split - The dataset is split into two parts: training set and testing set with split percentage as 75-25. Cross-validation is used to prevent overfitting on the training dataset. Overfitting is a situation when the fitte model is overly complicated due to noise data-points in the training data. In such a case, the model gives a good accuracy on the training dataset but would perform worse on the unseen-data. Used k-fold cross validation to train the model. k-fold cross-validation partitions the data into k subsets. One of the sets out of k is reserved for the validation set and rest k-1 sets are used to train the model. Now, the left 1 set is what the model is tested against before making predictions for the test set. This process is repeated k times, and the accuracy is averaged out.
+
+All the classifiers used were imported from the sklearn module.  SVMs are robust in the cases of overfitting. Random forest creates a number of trees, unlike a decision tree algorithm which creates a single tree. This algorithm overcomes the overfitting limitation of the Decision Tree algorithm along with reducing the biases.
+
+Best algorithm on the Yelp Dataset was using Random Forest (76%) and the worst algorithm on Yelp was SVC (44.8%).
 
 #### Sentiment Analysis of Yelp‘s Ratings Based on Text Reviews; Xu Et al.
 * Goal to apply existing supervised learning algorithms to predict a review’s rating on a number scale base on text alone.
