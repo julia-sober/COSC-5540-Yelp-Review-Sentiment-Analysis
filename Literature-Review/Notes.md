@@ -109,7 +109,29 @@
   * For star rating of 5, our best model is able to correctly classify 79.57% of the test data points, but it could only correctly classify 32.30% of the data that has ratings of 2. (**** useful insight)
 
 #### Ensemble Sentiment Analysis Using Bi-LSTM and CNN; Puneet Singh Lamba Et al.
-* ...
+* **Dataset**: IMDB movie reviews and Yelp (separate)
+  * Both used label of either positive or negative (not star rating)
+* **Methodology**:
+  * 80/20 train test split
+  * **Preprocessing**:
+    * Removed non-alphabetic characters
+    * Removed punctuations
+    * Removed special characters
+    * Removed Regular Expressions (not sure what this means)
+  * Tokenization: NLTK library's word_tokenize()
+    * Includes stop word removal and stemming
+  * Hybrid of two techniques (Keras Sequential CNN and Bi-LSTM):
+    * Built/saved model with Bi-LSTM
+      * Forward, backward, and activation layers
+    * Built/saved new model with Bert Tokenizer and Keras Module
+      * 3 sequential layers, 1 merge, 1 dense
+    * Ensemble of both models
+      * Weighted average
+      * Stacking
+* **Results**:
+  * IMDB dataset has better results than Yelp
+  * Results given in ROC score instead of accuracy, so hard to compare with other results (probably because accuracy isn't that good)
+  * Weighted seems to be better than stacking
 
 #### Sentiment Analysis of Restaurant Reviews using Combined CNN-LSTM; Naimul Hossain Et al.
 * ...
