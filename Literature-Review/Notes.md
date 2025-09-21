@@ -89,19 +89,7 @@ o	Found other algorithms that are not suitable to use for this.
 •	Preprocessing – removed all punctuation and spaces from the review text. Convert capital letters to lower case (helps with feature selection). 
 •	Feature selection – 1) using an existing opinion lexicon. 2) building feature dictionary using training data 
 o	Feature selection algorithm – Bing Liu Opinion Lexicon. Has link to download. 
-o	Other feature selection algorithm – loops over training set to build a dictionary mapping each word to frequency of occurrence in the training set.
-	Appends “not_” to every word between negation and following punctuation. 
-	Removes stop words (common words) found using the Terrier stop wordlist. 
-	Stemming – reducing a word to its stem/root word. Uses Porter Algorithm, integrated in Natural Language Toolkit (NLTK).
-	Stopword + Stemming gives the best precision and recall percentages for test error using Naive Bayes. (highest prediction accuracy)
-	High bias using an existing lexicon – lot of the features in the lexicon are not from the yelp dataset. Yelp has words spelled wrong, but still has sentiment behind them. 
-	Negation handling did not improve results. Potentially overfitting by adding more words. May have generated noise. Had 39,030 weights in the model.
-o	Precision and recall percentages much better for ratings 1 and ratings 5
-•	Only training on 2 categories for each sentence within a review, positive and negative. Difficult to predict how positive and how negative. 
-•	Predictions are predicted to be consistently lower than the actual rating. They scaled their predictions to have the same mean and standard deviation of the actual stary ratings. This did not improve prediction accuracy. 
-o	Separated reviews into two groups: 1-3 Starts as Positive, 4-5 stars as negative. 
-	Not sure why they did this. 
-•	Naive Bayes – in the sciit-learn ML library. Most suitable for text classification. Use laplace smoothing to avoid overfitting. Implemented Binarized Naive bayes using Boolean feature vector (1 or 0 if the word occurred or not). Word occurrences may matter more than frequency. Much better than the perceptron algorithm. Star 4 and 5 are difficult to distinguish from each other. Same for stars 1, 2, 3
+o	Other feature selection algorithm – loops over training set to build a dictionary mapping each word to frequency of occurrence in the training set.Appends “not_” to every word between negation and following punctuation.	Removes stop words (common words) found using the Terrier stop wordlist. Stemming – reducing a word to its stem/root word. Uses Porter Algorithm, integrated in Natural Language Toolkit (NLTK).Stopword + Stemming gives the best precision and recall percentages for test error using Naive Bayes. (highest prediction accuracy)High bias using an existing lexicon – lot of the features in the lexicon are not from the yelp dataset. Yelp has words spelled wrong, but still has sentiment behind them. Negation handling did not improve results. Potentially overfitting by adding more words. May have generated noise. Had 39,030 weights in the model. Precision and recall percentages much better for ratings 1 and ratings 5. Only training on 2 categories for each sentence within a review, positive and negative. Difficult to predict how positive and how negative. Predictions are predicted to be consistently lower than the actual rating. They scaled their predictions to have the same mean and standard deviation of the actual stary ratings. This did not improve prediction accuracy.Separated reviews into two groups: 1-3 Starts as Positive, 4-5 stars as negative. (Not sure why they did this). Naive Bayes – in the sciit-learn ML library. Most suitable for text classification. Use laplace smoothing to avoid overfitting. Implemented Binarized Naive bayes using Boolean feature vector (1 or 0 if the word occurred or not). Word occurrences may matter more than frequency. Much better than the perceptron algorithm. Star 4 and 5 are difficult to distinguish from each other. Same for stars 1, 2, 3
 
 
 
