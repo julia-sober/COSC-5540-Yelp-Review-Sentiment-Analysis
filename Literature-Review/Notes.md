@@ -78,7 +78,7 @@
 * ...
 
 #### Sentiment Analysis of Yelp‘s Ratings Based on Text Reviews; Xu Et al.
-* ... •	Goal to apply existing supervised learning algorithms to predict a review’s rating on a number scale base on text alone.
+* Goal to apply existing supervised learning algorithms to predict a review’s rating on a number scale base on text alone.
 o	  Experiment with Naïve Bayes, Perceptron, and Multiclass Support Vector Machine (SVM). Compare predictions with actual ratings.
 o	Uses precision and recall measuring effectiveness of the algorithms and compare results of the different approaches.
 o	Explore various feature selection algorithms. Sentiment dictionary, own built feature set, remove stop words & stemming.
@@ -95,8 +95,7 @@ o	Other feature selection algorithm – loops over training set to build a dicti
 	Stemming – reducing a word to its stem/root word. Uses Porter Algorithm, integrated in Natural Language Toolkit (NLTK).
 	Stopword + Stemming gives the best precision and recall percentages for test error using Naive Bayes. (highest prediction accuracy)
 	High bias using an existing lexicon – lot of the features in the lexicon are not from the yelp dataset. Yelp has words spelled wrong, but still has sentiment behind them. 
-	Negation handling did not improve results. Potentially overfitting by adding more words. May have generated noise. 
-•	Had 39,030 weights in the model.
+	Negation handling did not improve results. Potentially overfitting by adding more words. May have generated noise. Had 39,030 weights in the model.
 o	Precision and recall percentages much better for ratings 1 and ratings 5
 •	Only training on 2 categories for each sentence within a review, positive and negative. Difficult to predict how positive and how negative. 
 •	Predictions are predicted to be consistently lower than the actual rating. They scaled their predictions to have the same mean and standard deviation of the actual stary ratings. This did not improve prediction accuracy. 
