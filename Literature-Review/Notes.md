@@ -134,7 +134,15 @@
   * Weighted seems to be better than stacking
 
 #### Sentiment Analysis of Restaurant Reviews using Combined CNN-LSTM; Naimul Hossain Et al.
-* ...
+* Restaurant reviews in Bengali language (may not apply to english)
+* 94% accuracy using combined CNN-LTSM
+  * Batch size = 128, learning rate = 0.0001, 75 epochs
+  * Both CNN and LSTM layer used in this technique w/ CNN used for extracting low-level features and LSTM for high levels
+  * Convolutional layer has 256 filters and kernel size = 3, ReLU activation, and max pooling
+  * LTSM layer with hidden size 128
+  * Dropout rate = 0.25
+  * Softmax on output
+* Dataset = 1,000 unlabeled reviews scraped from internet (so they labeled as positive or negative by hand)
 
 #### Sentiment Analysis of Yelp Reviews by Machine Learning; Hemalatha S, Ramathmika
 * ...
