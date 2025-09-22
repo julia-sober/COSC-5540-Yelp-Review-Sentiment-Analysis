@@ -25,9 +25,9 @@ This project builds on these findings and explores methods that combine robust t
   - Experiment with regressors (rounding up to nearest star rating and maintaining output between 1-5) over classifiers.
 
 ## 3. Dataset
-We will use the Yelp Dataset Challenge data (restaurant reviews):
+We will use the Yelp Dataset Challenge data:
 
-- Large sample size (~7-8 million reviews).
+- Large sample size (~7-8 million reviews). Will likely have to limit to only restaurants in D.C.
 - Text + star rating available.
 - Known imbalance: about two-thirds of reviews have ≥4 stars.
 
