@@ -161,16 +161,21 @@
 #### Sentiment Analysis on Food Review using Machine Learning Approach; Nourin Islam, Ms. Nasrin Akter, Abdus Sattar
 * 
 Abstract and Introduction:
+
 •	Exploration uses three front line ML classifiers: SVM, Logistic Regression, Random Forrest, Naïve Bayes classifier for development of product review analysis. Looks at twitter and yelp reviews. 
 •	Most evaluation assessment has been done at the narrative level, for instance seeing positive from negative surveys.  
 •	Feeling of appraisal is a fundamentally confined NLP issue because the framework doesn’t need to thoroughly understand the semantics of each sentence or report yet basically needs to see a few pieces of good or negative thoughts and their objective parts or subjects. 
 •	In this paper, we went after a dataset including tweets for critical howl food audit and played out a multi-class assessment. The examination was finished using 4 particular courses of action systems Random Forest, Logistic Regression, SVM, and Naïve Bayes. The classifiers were set up to use 80% of the data and had a go at using the remaining 20% data. The consequence of the test set is the tweet incline. Considering the results got, the exactness’s were resolved to draw an assessment between each gathering approach and the overall speculation count was envisioned uniting every one of the yelp food survey.
+
 Literature Review:
+
 •	Change the substance data into customary numerical data and subsequently to realize data portrayals. Each word appearing in a food audit dataset can be switched to an attribute and each substance record to a vector of matched characteristics, which exhibits the occasions of the words in file. 
 •	By picking the important features for portrayal tasks, the dimensionality of the substance request dataset can be diminished to a reasonable size. 
 •	End analysis has three levels: report, sentence, and edge level. The narrative level framework appraisal means to organize the entire report as a positive or negative tendency. Sentence level framework evaluation means to organize the thought passed on in each sentence. In the end, the point of view level evaluation appraisal expects to see the completion of the particular edges or highlights of substances. As shown by this examination, it is in sentence level. 
 •	The issue of foreseeing a client's star rating for an item, given the client's content survey for that item, is called Review Rating Prediction and has recently gotten mainstream, though hard, the issue in AI [18].
+
 Paper References:
+
 •	Twitter Sentiment Analysis by Sanket Sahu et al. in 2015. 
 o	Applies spell checking tally. Used SVM and maximum entropy. Uprooted emoji with words. Accuracy of 74.2%
 Research Methodologies: 
@@ -178,7 +183,9 @@ Research Methodologies:
 •	The motivation behind why we stem is to abbreviate the query, and standardize sentences. Quite possibly the most mainstream stemming calculations is the Porter stemmer.
 •	Stop word remove. NLTK in python has a quick overview of stop words put aside in 16 unique vernaculars. We can discover them in the nltk library.
 •	Statistical analysis. Dataset contains 10,000 food review data collected from yelp. Dataset ahs 10 columns. Trains on 80% of the data. Tests on the other 20%. Reviews categorized by 5 starts. 
+
 Results: 
+
 •	Vaive Bayes: F1-Score and Accuracy of 42.45
 •	Random forest: F1-Score and Accuracy of 48.80
 •	SVM: F1-Score and Accuracy of 55.40
