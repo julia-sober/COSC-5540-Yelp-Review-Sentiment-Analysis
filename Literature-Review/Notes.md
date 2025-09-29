@@ -232,4 +232,38 @@ o	Other feature selection algorithm – loops over training set to build a dicti
 * ...
 
 #### Predicting a Business’ Star in Yelp from Its Reviews’ Text Alone; Fan, Khademi
-* ...
+* Abstract:
+Give a business’ overview a 1-5 start rating. Predict a business’ rating based on user-generated review’s texts alone. Cancels out subjectivity. Uses 3 feature generation methods and 4 machine learning models to find the best prediction result. Create a bag of words from the top frequent words in all raw text reviews, or top frequent words/adjectives from results of Part of Speech analysis. Our results show Root Mean Square Error (RMSE) of 0.6 for the combination of Linear Regression with either of the top frequent words from raw data or top frequent adjectives after Part-of-Speech (POS).
+Introduction:
+Bias in start ratings compared to text alone. Two reviews can speak just as highly about a restaurant yet have two different start ratings. One could give 5 stars and the other could give 3 starts. Motivation is to predict a business rating based on its text reviews alone to reduce star rating bias of the reviewers. 
+Their work is opinion mining but does not use sentiment analysis to tag positivity/negativity of the reviews. Focuses on generating different features and analyzing how these features affect the performance of their prediction models. 
+First reviews received for business averages 4.1 starts. Overestimating their eventual reputation. The yelp ratings evolve over time. 20th review averages 3.69 stars. Called “warm start bias”. 
+Data:
+4,243 restaurants in the yelp data set. Randomly chose 1000 of them and analyzed 35,645 text reviews written about them. Divided data into 90% training and 10% testing. Words like “food”, “good”, “place” have the highest frequency of repeated words in all reviews of the selected 1000 restaurants.
+
+Feature selection: 
+Formed bag of words from text reviews of all restaurants. Picked the top K frequency words and calculated the frequency of each top K words in all reviews of each business. Generated 3 feature vectors: 1) baseline, 2) feature engineering I, 3) feature engineering II
+Baseline – raw data of the top K frequent words in all the reviews. Array of words became a feature vector. Went through the reviews of each 1000 restaurants and counted the number of times that each member of our feature vector was used to describe that restaurant. Provides math formula for the frequency calculation. 
+Feature engineering I – Part of Speech (POS) might help figure out the most representative words as our feature vector. Used it per sentence. Selected the top K frequency words amongs all. 
+Feature engineering II – K frequent adjectives to see if it yields a better result than POS. 
+
+Learning Methods: 
+Predicting a business star as a regression problem. Chose 4 learning models: Linear Regression, Support Vector Regression, Support Vector Regression with normalized features, and Decision Tree Regression. 
+
+Results and Evaluations: 
+Uses the Root Mean Square Error to quantify the error, instead of using accuracy. Provides the equation. Regardless of which feature generation method was used, the regression model performed the best. Best performance when having 50 – 100 features. Decision Tree has closest performance to regression. Decision Tree is also super fast. Normalization helps improve Support Vector Regression.
+
+Lowest Root Mean Square Error was on the baseline feature selection method (the top frequent words from raw data). 
+
+Scalability:
+Using HashMap while processing large amount of text reviews accelerates making the bag of words and search for all words’ frequencies because the search time complexity is O(log N).
+
+Discussion:
+
+For different feature generation methods, there were no significant differences in the Root Mean Square Error. Raw data had equivalent power as the feature engineering methods. 
+Linear Regression performs the best in general because Linear Regression assumes the linear relationship between features and target, and can infer that for the data the features and target might be linear correlated. 
+Too many features poison linear regression. Features above 500, the performance drops. Potential reason is because linear regression is sensitive to outliers. More features, then more potential outliers. 
+Decision tree regression is robust with respect to the number of features. Good to use as a comparison if there is a time limitation.
+
+Conclusion/future work: 
+Future work to generalize the model by using other business categories that are not restaurants. Such as fashion and beauty. To see if it affects the model’s accuracy.
