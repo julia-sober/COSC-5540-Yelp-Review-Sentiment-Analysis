@@ -56,7 +56,9 @@ We will experiment with a range of models:
 - **Tree-based ensembles:** Random Forest, AdaBoost.
 - **Neural networks:** Shallow and deep Multi-Layer Perceptrons with BERT embeddings.
 - **Hybrid/ensemble approaches:** Weighted voting or stacking of baseline + MLP models.
-- **(Future work) Ordinal models:** Ordered logistic regression to reflect the ordinal nature of star ratings.
+- **Ordinal models:** Ordered logistic regression to reflect the ordinal nature of star ratings.
+- **Regressors:** RandomForest, SVM, etc.
+- **Layered Regressor/Classifier:** Start by classifying as positive/negative/neutral then use regressor to predict actual star rating. 
 
 ### 4.4 Evaluation Metrics
 - k-fold cross-validation on training data to select hyperparameters.
