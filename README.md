@@ -44,7 +44,7 @@ This project demonstrates how to build and evaluate a sentiment analysis pipelin
 
 ---
 
-## ⚙️ Methodology  
+## Methodology  
 
 ### 1. **Exploratory Data Analysis (EDA)**  
 - Review length distribution  
